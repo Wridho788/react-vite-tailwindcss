@@ -11,7 +11,7 @@ const Card = ({ children }) => {
 function Title({ children }) {
     return (
         <div className='p-4 border-b'>
-            <h1 className='text-xl'>{children}</h1>
+            <h1 className='text-xl text-slate-800'>{children}</h1>
         </div>
     )
 }
