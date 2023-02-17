@@ -1,41 +1,25 @@
 import { IconBrandTwitter, IconBrandFacebook, IconBrandGithub } from '@tabler/icons-react'
-import clsx from 'clsx'
-
-function App() {
-
-    const type = 'submit'
-    const onClick = () => console.log('login tesla')
-
+import Button from './components/Button'
+import Card from './components/Card'
+const App = () => {
     return (
-        <div className='bg-slate-800 grid place-content-center min-h-screen'>
-            <div className="flex gap-x-2">
-                <Button type="submit" onClick={() => console.log('register')}>
-                    <IconBrandFacebook />
-                    Login
-                </Button>
-                <Button className='bg-sky-600' {...{ type, onClick }}>
-                    <IconBrandTwitter />
-                    Login
-                </Button>
-                <Button className='bg-black'>
-                    <IconBrandGithub />
-                    Login
-                </Button>
+        <div className='bg-slate-100 text-slate-800 tracking-tighter flex items-center justify-center antialiased min-h-screen'>
+            <div className='max-w-md w-full'>
+                <Card>
+                    <Card.Title>Hello World</Card.Title>
+                    <Card.Body>
+                        {' '}
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet asperiores voluptas quos dolores delectus accusamus
+                        distinctio rerum praesentium, commodi assumenda excepturi suscipit cupiditate dolorem nisi reiciendis repellendus facere,
+                        accusantium odit?{' '}
+                    </Card.Body>
+                    <Card.Footer>
+                        <Button>Register</Button>
+                    </Card.Footer>
+                </Card>
             </div>
-
         </div>
     )
 }
 
 export default App
-
-
-function Button(props) {
-    // ** default value props
-    const { className = 'bg-blue-600', text, children } = props
-    return (
-        <button {...props} className={clsx(className, '[&>svg]:w-5 [&>svg]:h-5 [&>svg]:stroke-1 flex items-center gap-x-2 text-white px-4 py-2 rounded')}>
-            {text || children}
-        </button>
-    )
-}
