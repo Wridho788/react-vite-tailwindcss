@@ -26,6 +26,7 @@ const Todo = () => {
             }
             return task;
         })
+        // TODO: localStorage.setItem('tasks', value)
         setTasks(updateTask)
         console.log(id, 'id')
     }
