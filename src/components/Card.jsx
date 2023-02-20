@@ -1,11 +1,7 @@
 import React from 'react'
 
 const Card = ({ children }) => {
-    return (
-        <div className='shadow rounded-lg overflow-hidden bg-white'>
-            {children}
-        </div>
-    )
+    return <div className='shadow rounded-lg overflow-hidden bg-white'>{children}</div>
 }
 
 function Title({ children }) {
@@ -21,12 +17,11 @@ function Body({ children }) {
 }
 
 function Footer({ children }) {
-
     return <div className='bg-slate-50 p-4'>{children}</div>
 }
 
-Card.Title = Title;
-Card.Body = Body;
-Card.Footer = Footer;
+Card.Title = Title
+Card.Body = Body
+Card.Footer = Footer
 
 export default Card
