@@ -1,30 +1,53 @@
 import PlaceContentCenter from './components/PlaceContentCenter'
-import Card from './components/Card'
-import Button from './components/Button'
 import Input from './components/Input'
-import { useRef, useState } from 'react'
+import Button from './components/Button'
+import { useEffect, useState } from 'react'
 
 const App = () => {
-    // const [tick, setTick] = useState(0)
-    // const inputRef = useRef(null)
 
-    function handleClick() {
-        // inputRef.current.focus()
-        // const newTick = tick + 1
-        // setTick(newTick)
-        // console.log(newTick)
+    const [name, setName] = useState('')
+    const [online, setOnline] = useState(false)
+
+    // ! Hooks always rendered
+    useEffect( () => {
+        // console.log('always rendered')
+    })
+
+    // ! Hooks First Render
+    useEffect( () => {
+        // console.log('first rendered')
+    },[])
+
+    // ! Hooks rendered after if change state
+    useEffect( () => {
+        // console.log(`i am now ${online ? 'online' : 'offline'}`)
+    },[online])
+
+    // ! Hooks cleanup hook
+    // example
+    function updateScrollPosition() {
+        const windowScrolling = window.scrollY
+        console.log(`window scrolling ${windowScrolling}`)
+        setScrollPosition(windowScrolling)
     }
+
+
+    useEffect( () => {
+        window.addEventListener('scroll', updateScrollPosition)
+        // TODO: dibagian ini dibutuhkan cleanup function
+        return () => {
+            window.removeEventListener('scroll', updateScrollPosition)
+        }
+    })
+
+
     return (
-        <PlaceContentCenter>
-            <Card>
-                <Card.Title>useRef Hooks </Card.Title>
-                <Card.Body>
-                    <Input className="boder border-slate-600" isFocused/> 
-                    <Button text='Tick' onClick={handleClick} />
-                </Card.Body>
-                {/* <Card.Footer>You clicked {tick} times</Card.Footer> */}
-            </Card>
-        </PlaceContentCenter>
+        <div className='h-[4000px]'>
+            <Input className="boder border-slate-600" value={name} onChange={(e)=> setName(e.target.value)}/>
+            <Button onClick={(e)=> setOnline(online=> !online)} >Set Online</Button>
+
+
+        </div>
     )
 }
 
